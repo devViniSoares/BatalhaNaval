@@ -4,48 +4,63 @@ package batalhanaval;
 import java.util.Scanner;
 import java.util.Random;
 
-public class Tabuleiro {
+public class tabuleiro {
 
-    public static char[][] tabuleiro() {
-        Scanner sc = new Scanner(System.in);
-        int linhas, colunas;
+     public static char[][] tabuleiro() {
+        Scanner input = new Scanner(System.in);
+        Random gerador = new Random();
 
-        // Definir tamanho do tabuleiro
-        do {
-            System.out.print("Digite o número de linhas (mínimo 2): ");
-            linhas = sc.nextInt();
-            System.out.print("Digite o número de colunas (mínimo 3): ");
-            colunas = sc.nextInt();
+        int linha = 0, coluna = 0;
 
-            if ((linhas < 2 && colunas < 3) || (linhas < 3 && colunas < 2)) {
-                System.out.println("Tamanho inválido! O tabuleiro deve ter no mínimo 2x3 ou 3x2.");
-            }
-        } while ((linhas < 2 && colunas < 3) || (linhas < 3 && colunas < 2));
+        
+        while (linha * coluna < 5) {
+            System.out.println("Digite o número de linhas do tabuleiro: ");
+            linha = input.nextInt();
+            System.out.println("Digite o número de colunas do tabuleiro: ");
+            coluna = input.nextInt();
 
-        // Criar tabuleiro e preencher com '~' representando água
-        char[][] tab = new char[linhas][colunas];
-        for (int i = 0; i < linhas; i++) {
-            for (int j = 0; j < colunas; j++) {
-                tab[i][j] = '~'; // símbolo para água
+            if (linha * coluna < 5) {
+                System.out.println("O tabuleiro precisa ter no mínimo 5 espaços");
+                System.out.println();
             }
         }
 
-        // Posicionar 5 navios aleatoriamente ('N' para navio)
-        Random rand = new Random();
-        int naviosColocados = 0;
+        char[][] tab = new char[linha][coluna];
 
-        while (naviosColocados < 5) {
-            int linha = rand.nextInt(linhas);
-            int coluna = rand.nextInt(colunas);
+        int linha1 = 0;
+        int coluna1 = 0;
 
-            if (tab[linha][coluna] != 'N') {
-                tab[linha][coluna] = 'N';
-                naviosColocados++;
+      
+        for (int cont = 0; cont < 5; cont++) {
+            linha1 = gerador.nextInt(linha);
+            coluna1 = gerador.nextInt(coluna);
+
+            if (tab[linha1][coluna1] == 'n') {
+                cont--; 
+            } else {
+                tab[linha1][coluna1] = 'n';
             }
+        }
+
+               for (int cont1 = 0; cont1 < linha; cont1++) {
+            for (int cont2 = 0; cont2 < coluna; cont2++) {
+                if (tab[cont1][cont2] != 'n') {
+                    tab[cont1][cont2] = 'a';
+                }
+            }
+        }
+
+        
+        for (int cont1 = 0; cont1 < linha; cont1++) {
+            for (int cont2 = 0; cont2 < coluna; cont2++) {
+                System.out.print("~ ");
+            }
+            System.out.println();
         }
 
         return tab;
     }
+
 }
 
 
