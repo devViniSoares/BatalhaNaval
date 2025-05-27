@@ -18,6 +18,7 @@ public class tabuleiro {
             linha = input.nextInt();
             System.out.println("Digite o número de colunas do tabuleiro: ");
             coluna = input.nextInt();
+            System.out.println();
 
             if (linha * coluna < 5) {
                 System.out.println("O tabuleiro precisa ter no mínimo 5 espaços");
@@ -35,17 +36,17 @@ public class tabuleiro {
             linha1 = gerador.nextInt(linha);
             coluna1 = gerador.nextInt(coluna);
 
-            if (tab[linha1][coluna1] == 'n') {
+            if (tab[linha1][coluna1] == 'N') {
                 cont--; 
             } else {
-                tab[linha1][coluna1] = 'n';
+                tab[linha1][coluna1] = 'N';
             }
         }
 
                for (int cont1 = 0; cont1 < linha; cont1++) {
             for (int cont2 = 0; cont2 < coluna; cont2++) {
-                if (tab[cont1][cont2] != 'n') {
-                    tab[cont1][cont2] = 'a';
+                if (tab[cont1][cont2] != 'N') {
+                    tab[cont1][cont2] = 'x';
                 }
             }
         }
