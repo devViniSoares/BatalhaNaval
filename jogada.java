@@ -1,3 +1,5 @@
+package batalhanaval;
+
 import java.util.Scanner;
 
 public class jogada {
@@ -16,70 +18,54 @@ public class jogada {
             int jogadalinha = linha + 1, jogadacoluna = coluna + 1;
 
             while (jogadalinha >= linha || jogadalinha < 0) {
-                System.out.println("faça sua jogada \nEscolha a posição da linha: ");
+                System.out.println("Faca sua jogada\nEscolha a posicao da linha: ");
                 jogadalinha = input.nextInt() - 1;
-                if (jogadalinha >= linha) {
-                    System.out.println("!!!POSIÇÃO INVÁLIDA!!!");
-                    System.out.println();
+                if (jogadalinha >= linha || jogadalinha < 0) {
+                    System.out.println("!!!POSICAO INVALIDA!!!\n");
                 }
             }
 
             while (jogadacoluna >= coluna || jogadacoluna < 0) {
-                System.out.println("Escolha a posição da coluna: ");
+                System.out.println("Escolha a posicao da coluna: ");
                 jogadacoluna = input.nextInt() - 1;
-                if (jogadacoluna >= coluna) {
-                    System.out.println("!!!POSIÇÃO INVÁLIDA!!!");
-                    System.out.println();
+                if (jogadacoluna >= coluna || jogadacoluna < 0) {
+                    System.out.println("!!!POSICAO INVALIDA!!!\n");
                 }
             }
 
-            if (tabuleiro[jogadalinha][jogadacoluna] == 'n') {
-                tabuleiro[jogadalinha][jogadacoluna] = 'x';
-                
-                for (int contl = 0; contl < linha; contl++) {   
-                    for (int contc = 0; contc < coluna; contc++) {
-                        if (tabuleiro[contl][contc] == 'x') {
-                            System.out.println("x ");
-                        } else if (tabuleiro[contl][contc] == 'o') {
-                            System.out.println("O ");
-                        } else {
-                            System.out.println("~ ");
-                        }
-                    }
-                    System.out.println();
-                }
+            if (tabuleiro[jogadalinha][jogadacoluna] == 'N') {
+                tabuleiro[jogadalinha][jogadacoluna] = 'X';
 
-                System.out.println();
-                System.out.println("!!!VOCÊ ACERTOU!!!");
-                System.out.println();
-                System.out.println();
+                imprimirTabuleiro(tabuleiro);
+
+                System.out.println("\n!!!VOCE ACERTOU!!!\n");
                 navio--;
-            } else if (tabuleiro[jogadalinha][jogadacoluna] == 'a') {
-                tabuleiro[jogadalinha][jogadacoluna] = 'o';
-                
-                for (int contl = 0; contl < linha; contl++) {
-                    for (int contc = 0; contc < coluna; contc++) {
-                        if (tabuleiro[contl][contc] == 'o') {
-                            System.out.println("O ");
-                        } else if (tabuleiro[contl][contc] == 'x') {
-                            System.out.println("X ");
-                        } else {
-                            System.out.println("~ ");
-                        }
-                    }
-                    System.out.println();
-                }
-                
-                System.out.println();
-                System.out.println("!!!VOCÊ ERROU!!!");
-                System.out.println();
-                System.out.println();
+            } else if (tabuleiro[jogadalinha][jogadacoluna] == '-') {
+                tabuleiro[jogadalinha][jogadacoluna] = 'A';
 
+                imprimirTabuleiro(tabuleiro);
+
+                System.out.println("\n!!!VOCE ERROU!!!\n");
             } else {
-                System.out.println();
-                System.out.println("ESSA POSIÇÃO JÁ FOI ATACADA");
-                System.out.println();
+                System.out.println("\nESSA POSICAO JA FOI ATACADA\n");
             }
+        }
+        System.out.println("\n!!!!VOCE VENCEU!!!!");
+        System.out.println("Voce venceu em " + contador + " tentativas");
+    }
+
+    private void imprimirTabuleiro(char[][] tabuleiro) {
+        for (int contl = 0; contl < linha; contl++) {
+            for (int contc = 0; contc < coluna; contc++) {
+                if (tabuleiro[contl][contc] == 'X') {
+                    System.out.print("X ");
+                } else if (tabuleiro[contl][contc] == 'A') {
+                    System.out.print("A ");
+                } else {
+                    System.out.print("~ ");
+                }
+            }
+            System.out.println();
         }
     }
 }
