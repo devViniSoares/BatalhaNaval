@@ -1,4 +1,3 @@
-
 package batalhanaval;
 
 import java.util.Scanner;
@@ -6,52 +5,47 @@ import java.util.Random;
 
 public class tabuleiro {
 
-     public static char[][] tabuleiro() {
+    public static char[][] tabuleiro() {
         Scanner input = new Scanner(System.in);
         Random gerador = new Random();
 
         int linha = 0, coluna = 0;
 
-        
         while (linha * coluna < 5) {
-            System.out.println("Digite o número de linhas do tabuleiro: ");
+            System.out.println("Digite o numero de linhas do tabuleiro: ");
             linha = input.nextInt();
-            System.out.println("Digite o número de colunas do tabuleiro: ");
+            System.out.println("Digite o numero de colunas do tabuleiro: ");
             coluna = input.nextInt();
             System.out.println();
 
             if (linha * coluna < 5) {
-                System.out.println("O tabuleiro precisa ter no mínimo 5 espaços");
-                System.out.println();
+                System.out.println("O tabuleiro precisa ter no minimo 5 espacos\n");
             }
         }
 
         char[][] tab = new char[linha][coluna];
 
-        int linha1 = 0;
-        int coluna1 = 0;
+        // Inicializa tudo com '-'
+        for (int i = 0; i < linha; i++) {
+            for (int j = 0; j < coluna; j++) {
+                tab[i][j] = '-';
+            }
+        }
 
-      
+        int linha1, coluna1;
+
         for (int cont = 0; cont < 5; cont++) {
             linha1 = gerador.nextInt(linha);
             coluna1 = gerador.nextInt(coluna);
 
             if (tab[linha1][coluna1] == 'N') {
-                cont--; 
+                cont--;
             } else {
                 tab[linha1][coluna1] = 'N';
             }
         }
 
-               for (int cont1 = 0; cont1 < linha; cont1++) {
-            for (int cont2 = 0; cont2 < coluna; cont2++) {
-                if (tab[cont1][cont2] != 'N') {
-                    tab[cont1][cont2] = 'x';
-                }
-            }
-        }
-
-        
+        // Mostra o tabuleiro ocultado
         for (int cont1 = 0; cont1 < linha; cont1++) {
             for (int cont2 = 0; cont2 < coluna; cont2++) {
                 System.out.print("~ ");
@@ -61,7 +55,4 @@ public class tabuleiro {
 
         return tab;
     }
-
 }
-
-
