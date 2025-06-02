@@ -1,6 +1,5 @@
-/* 
 package batalhanaval;
-*/
+
 
 import java.util.Scanner;
 
@@ -35,7 +34,7 @@ public class jogada {
                 jogadalinhaChar = input.next().toUpperCase().charAt(0);
                 jogadalinha = jogadalinhaChar - 'A';
                 if (jogadalinha >= linha || jogadalinha < 0) {
-                    System.out.println("!!!POSIÇÃO INVÁLIDA!!!");
+                    System.out.println("!!!POSICAO INVALIDA!!!");
                 }
             }
 
@@ -43,28 +42,28 @@ public class jogada {
                 System.out.print("Escolha o número da coluna: ");
                 jogadacoluna = input.nextInt() - 1;
                 if (jogadacoluna >= coluna || jogadacoluna < 0) {
-                    System.out.println("!!!POSIÇÃO INVÁLIDA!!!");
+                    System.out.println("!!!POSICAO INVALIDA!!!");
                 }
             }
 
             if (tabuleiro[jogadalinha][jogadacoluna] == 'N') {
                 tabuleiro[jogadalinha][jogadacoluna] = 'X';
-                System.out.println("\n!!!VOCÊ ACERTOU!!!\n");
+                System.out.println("\n!!!VOCE ACERTOU!!!\n");
                 navio--;
             } else if (tabuleiro[jogadalinha][jogadacoluna] == '-') {
                 tabuleiro[jogadalinha][jogadacoluna] = 'A';
-                System.out.println("\n!!!VOCÊ ERROU!!!\n");
+                System.out.println("\n!!!VOCE ERROU!!!\n");
             } else {
-                System.out.println("\nESSA POSIÇÃO JÁ FOI ATACADA\n");
+                System.out.println("\nESSA POSICAO JÁ FOI ATACADA\n");
             }
         }
 
         if (navio == 0) {
             System.out.println("\n!!!!VOCÊ VENCEU!!!!");
-            System.out.println("Você venceu em " + contador + " tentativas");
+            System.out.println("Voce venceu em " + contador + " tentativas");
         } else {
             System.out.println("\n!!!!FIM DAS TENTATIVAS!!!!");
-            System.out.println("Você perdeu!");
+            System.out.println("Voce perdeu!");
         }
     }
 
@@ -87,27 +86,27 @@ public class jogada {
                 jogadalinhaChar = input.next().toUpperCase().charAt(0);
                 jogadalinha = jogadalinhaChar - 'A';
                 if (jogadalinha >= linha || jogadalinha < 0) {
-                    System.out.println("!!!POSIÇÃO INVÁLIDA!!!");
+                    System.out.println("!!!POSICAO INVALIDA!!!");
                 }
             }
 
             while (jogadacoluna >= coluna || jogadacoluna < 0) {
-                System.out.print("Escolha o número da coluna: ");
+                System.out.print("Escolha o numero da coluna: ");
                 jogadacoluna = input.nextInt() - 1;
                 if (jogadacoluna >= coluna || jogadacoluna < 0) {
-                    System.out.println("!!!POSIÇÃO INVÁLIDA!!!");
+                    System.out.println("!!!POSICAO INVALIDA!!!");
                 }
             }
 
             if (tab[jogadalinha][jogadacoluna] == 'N') {
                 tab[jogadalinha][jogadacoluna] = 'X';
-                System.out.println("\n!!!VOCÊ ACERTOU!!!\n");
+                System.out.println("\n!!!VOCE ACERTOU!!!\n");
                 if (vezJogador1) navios2--; else navios1--;
             } else if (tab[jogadalinha][jogadacoluna] == '-') {
                 tab[jogadalinha][jogadacoluna] = 'A';
-                System.out.println("\n!!!VOCÊ ERROU!!!\n");
+                System.out.println("\n!!!VOCE ERROU!!!\n");
             } else {
-                System.out.println("\nESSA POSIÇÃO JÁ FOI ATACADA\n");
+                System.out.println("\nESSA POSICAO JA FOI ATACADA\n");
             }
 
             vezJogador1 = !vezJogador1;
