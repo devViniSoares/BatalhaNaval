@@ -1,7 +1,9 @@
+/* 
 package batalhanaval;
+*/
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class tabuleiro {
 
